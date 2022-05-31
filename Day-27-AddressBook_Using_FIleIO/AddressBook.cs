@@ -113,7 +113,9 @@ namespace Day_27_AddressBook_Using_FIleIO
                     {
                         Console.WriteLine("\nRecords in AddressBook " + Bookname);
                         foreach (var data in element.Value)
+                        {
                             Console.WriteLine("\nFirstName :- " + data.FirstName + "\n" + "LastName :- " + data.LastName + "\n" + "Address :- " + data.Address + "\n" + "City :- " + data.City + "\n " + "State :- " + data.State + "\n" + "Zip :- " + data.Zip + " \n" + "PhoneNumber :- " + data.PhoneNumber + "\n" + "Email :- " + data.Email + "\n");
+                        }
                         break;
                     }
 
@@ -202,12 +204,18 @@ namespace Day_27_AddressBook_Using_FIleIO
                     }
                     num--;
                     count++;
-
+                   
                     foreach (var element in Book)
                     {
                         if (element.Key.Equals(BookName_ToAddContact))
-                        {
+                        {   
                             element.Value.AddRange(addNew_Contact);
+                            element.Value.Sort((x, y) => x.FirstName.CompareTo(y.FirstName)
+                                    + x.LastName.CompareTo(y.LastName)
+                                    + x.Address.CompareTo(y.Address)
+                                    + x.City.CompareTo(y.City)
+                                    + x.State.CompareTo(y.State)
+                                    + x.Zip.CompareTo(y.Zip));
                             Console.WriteLine("\nNew Contacts are added to AddressBook " + BookName_ToAddContact);
                             break;
                         }
@@ -264,6 +272,27 @@ namespace Day_27_AddressBook_Using_FIleIO
             }
             else
                 Console.WriteLine("\nYou Don't have any AddressBook To search!!");
+        }
+
+        // >> UC13 : Read Write Data of AddressBooks TO Text file
+        public void WriteAddressBooksData_To_TextFile_UsingFileIO()
+        {
+            string PathofFile_StoringAddressBooksData = @"D:\Day-27-AddressBook-Using_FileIO\Day-27-AddressBook_Using_FIleIO\AddressBookData.txt";
+            int count = 0;
+            using(StreamWriter sr=File.AppendText(PathofFile_StoringAddressBooksData))
+            {
+                sr.WriteLine("-------------- Records Of AddressBook System -------------\n");
+                foreach (var element in Book)
+                {
+                    foreach(var data in element.Value)
+                    {   count++;
+                        sr.WriteLine("\nRecord No :- "+count+"\n\nFirstName :- " + data.FirstName + "\n" + "LastName :- " + data.LastName + "\n" + "Address :- " + data.Address + "\n" + "City :- " + data.City + "\n " + "State :- " + data.State + "\n" + "Zip :- " + data.Zip + " \n" + "PhoneNumber :- " + data.PhoneNumber + "\n" + "Email :- " + data.Email + "\n");
+                    }
+
+                }
+                sr.Close();
+            }
+            Console.WriteLine("\n>> Data of AddressBooks successfully stored in File...");
         }
     }
 }

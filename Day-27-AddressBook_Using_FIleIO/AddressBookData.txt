@@ -1,0 +1,38 @@
+﻿-------------- Record Of AddressBook System -------------
+
+
+Record No :- 1
+
+FirstName :- Ganesh
+LastName :- Potdar
+Address :- Vikram
+City :- Latur
+ State :- MH
+Zip :- 413513 
+PhoneNumber :- 946656133
+Email :- abc@gmail.com
+
+
+Record No :- 2
+
+FirstName :- Komal
+LastName :- Shinde
+Address :- Kothrud
+City :- Pune
+ State :- MH
+Zip :- 411049 
+PhoneNumber :- 9848656546
+Email :- xyz@gmail.com
+
+
+Record No :- 3
+
+FirstName :- Mayur
+LastName :- Patil
+Address :- XYZ
+City :- Solapur
+ State :- MH
+Zip :- 98456 
+PhoneNumber :- 8465451316
+Email :- por334@gmail.com
+
