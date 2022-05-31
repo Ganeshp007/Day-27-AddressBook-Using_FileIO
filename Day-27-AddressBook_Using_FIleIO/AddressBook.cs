@@ -72,8 +72,16 @@ namespace Day_27_AddressBook_Using_FIleIO
                 num--;
                 count++;
             }
-            addContact.Sort((x, y) => x.FirstName.CompareTo(y.FirstName));
-            return addContact;//Returning the whole List
+
+            // >> UC 11 & 12 :sorting contact in addressBook based on name,address,city,state,Pincode etc //
+            //--------------------------------------------------------------------------------------------//
+            addContact.Sort((x, y) => x.FirstName.CompareTo(y.FirstName) 
+                                    + x.LastName.CompareTo(y.LastName)
+                                    + x.Address.CompareTo(y.Address)
+                                    + x.City.CompareTo(y.City)
+                                    + x.State.CompareTo(y.State)
+                                    + x.Zip.CompareTo(y.Zip));
+            return addContact;//Returning the whole sorted List
         }
         //Method to Add AddressBook 
         public void AddBook(string Bookname)
